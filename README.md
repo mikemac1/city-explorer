@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# City-Explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+(ver. 1.0)
 
-## Available Scripts
+## Author - Mike McCarty
 
-In the project directory, you can run:
+This project is the second JS React app Using APIs
 
-### `npm start`
+## Lab 06
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Problem Domain
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+14 November -
 
-### `npm test`
+## Instructions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Complete your Feature Tasks for the day.
+- Create a Pull Request (PR) back to the main branch of your repository.
+- Submit your assignment as a link to your PR, and a comment describing how much time you spent on the lab.
 
-### `npm run build`
+## Architecture
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Architecture](architecture.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Resources
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run eject`
+- [Getting Started](https://reactjs.org/docs/getting-started.html)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [React Bootstrap](https://react-bootstrap.github.io/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Change Log
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- 2:40pm Initial repository built on local developer's machine and on Github
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Comments & Reflections Lab 6
 
-## Learn More
+Number and name of feature: Feature #1 - Display images
+Estimate of time needed to complete: 120 minutes
+Start time: 1:40pm
+Finish time: pm
+Actual time needed to complete:  minutes
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Number and name of feature: Feature #2 -
+Estimate of time needed to complete: 0 minutes
+Start time: pm
+Finish time: pm
+Actual time needed to complete: minutes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Number and name of feature: Feature 3 -
+Estimate of time needed to complete: 0 minutes
+Start time: pm
+Finish time: pm
+Actual time needed to complete: minutes
 
-### Code Splitting
+Number and name of feature: Feature 4 -
+Estimate of time needed to complete: 0 minutes
+Start time: pm
+Finish time: pm
+Actual time needed to complete: minutes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- What went well, that I might forget if I don’t write down? Setting up React-Bootstrap, Netlify, and more importantly above all, creating the components that were used today. I really have no idea how any of the pages work together. For instance the default page line at the bottom, what is it doing? Why can there only be one line? What happens when you have functional components with class components? All of these questions and more are just piling up and I'm struggling at best with the basics.
 
-### Analyzing the Bundle Size
+- What did I learn today? Using Netlify is a very cool site to be able to host when running React versus Github Pages. I don't know why it supports React and Github doesn't but it is neat that there is a site that can host without charge.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- What should I do differently next time? Honestly I don't know. I put in less tickets today than yesterday but I completed watched the lecture again this afternoon and some parts 3 or 4 times because I am really not getting anything. I think at of all the questions asked today I might have been able to answer 2 of them. My knowledge is not where it needs to be and other than practicing I am not sure what else to do.
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+What still puzzles me, or what do I need to learn more about? LoL, everything. If the Class components stayed in just the syntax yesterday with just the HTML enclosed it would be a breeze, but as soon as the JS functions got included everything has been completely over my head. Top three of mind right now
