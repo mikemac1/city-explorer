@@ -39,14 +39,14 @@ This project is the second JS React app Using APIs
 Number and name of feature: Feature #1 - Display images
 Estimate of time needed to complete: 120 minutes
 Start time: 1:40pm
-Finish time: pm
-Actual time needed to complete:  minutes
+Finish time: 3:35pm
+Actual time needed to complete:  1hour 55 minutes
 
-Number and name of feature: Feature #2 -
-Estimate of time needed to complete: 0 minutes
-Start time: pm
-Finish time: pm
-Actual time needed to complete: minutes
+Number and name of feature: Feature #2 - Locations
+Estimate of time needed to complete: 120 minutes
+Start time: 4:05pm
+Finish time: 7:55am (the next day)
+Actual time needed to complete: roughly 7 hours
 
 Number and name of feature: Feature 3 -
 Estimate of time needed to complete: 0 minutes
