@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
+import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import './App.css';
 
@@ -13,7 +14,8 @@ class App extends React.Component {
       city: '',
       cityData: {},
       isError: false,
-      errorMessage: ''
+      errorMessage: '',
+      errorCode: ''
     }
   }
   handleCityInput = (e) => {
@@ -47,6 +49,7 @@ class App extends React.Component {
     } catch (error) {
       this.setState({
         errorMessage: error.message,
+        errorCode: error.code,
         isError: true
       })
     }
@@ -63,7 +66,11 @@ class App extends React.Component {
     let showMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=11`;
 
     if (this.state.isError) {
-      showError = <h3>{this.state.errorMessage}</h3>
+      showError = 
+      <article>
+      <Alert variant="danger">Error Code: {this.state.errorCode}</Alert>
+      <Alert  variant="danger">Message: {this.state.errorMessage}</Alert>
+      </article>
     } else {
       showCity = this.state.cityData.display_name;
       showLat = this.state.cityData.lat;
@@ -73,7 +80,7 @@ class App extends React.Component {
 
     return (
       <>
-        <body>
+        
           <header>
             <h1>DATA FROM LOCATIONIQ</h1>
           </header>
@@ -83,35 +90,33 @@ class App extends React.Component {
                 <input id="cityLink" name="city" type='text' onChange={this.handleCityInput} />
               </label>
               <button type="submit" variant="success">Explore</button>
-              <article>
-                {showError}
-              </article>
-
             </form>
+            <p>{showError}</p>
           </main>
+
           <Modal show={this.state.modalShown} onHide={this.closeModal}
-              size="lg"
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
-            >
-              <Modal.Header>
-                <Modal.Title>City - {showCity}</Modal.Title>
-              </Modal.Header>
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+          >
+            <Modal.Header>
+              <Modal.Title>City - {showCity}</Modal.Title>
+            </Modal.Header>
 
-              <Modal.Body>
-                <img src={showMap} alt={this.state.city.name + ' area map.'} />
-                <h3>Latitude: {showLat}</h3>
-                <h3>Longitude: {showLong}</h3>
-              </Modal.Body>
+            <Modal.Body>
+              <img src={showMap} alt={this.state.city.name + ' area map.'} />
+              <h3>Latitude: {showLat}</h3>
+              <h3>Longitude: {showLong}</h3>
+            </Modal.Body>
 
-              <Modal.Footer>
-                <Button onClick={this.closeModal} variant="secondary">Close</Button>
-              </Modal.Footer>
-            </Modal>
+            <Modal.Footer>
+              <Button onClick={this.closeModal} variant="secondary">Close</Button>
+            </Modal.Footer>
+          </Modal>
           <footer>
-            {/* <p><span>&copy</span>  Mike McCarty</p> */}
+            <p><span>&copy;</span>  Mike McCarty</p>
           </footer>
-        </body>
+        
       </>
     );
   }
