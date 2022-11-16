@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import Alert from 'react-bootstrap/Alert';
 
 class App extends React.Component {
 
@@ -50,6 +49,8 @@ class App extends React.Component {
     let showLat = '';
     let showLong = '';
 
+    let showMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=13`;
+
     if (this.state.isError) {
       showError = <h3>{this.state.errorMessage}</h3>
     } else {
@@ -75,11 +76,15 @@ class App extends React.Component {
                 {showError}
               </article>
               <ul>
-              {showCity}
-              {showLat}
-              {showLong}
+                {showCity}
+                {showLat}
+                {showLong}
               </ul>
             </form>
+            <img
+              src={showMap}
+              alt={this.state.city.name + ' area map.'}
+            />
           </main>
           <footer>
           </footer>

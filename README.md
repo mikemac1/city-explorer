@@ -48,9 +48,9 @@ Start time: 4:05pm
 Finish time: 7:55am (the next day)
 Actual time needed to complete: roughly 7 hours
 
-Number and name of feature: Feature 3 -
-Estimate of time needed to complete: 0 minutes
-Start time: pm
+Number and name of feature: Feature 3 - Map
+Estimate of time needed to complete: 7 hours
+Start time: 8:00am
 Finish time: pm
 Actual time needed to complete: minutes
 
