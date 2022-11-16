@@ -1,1 +1,30 @@
+body {
+background-color: bisque;
+}
 
+footer {
+    margin-top: 90%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-content {
+    align-items: center;
+}
+
+Button {
+    background-color: rgb(84, 223, 84);
+}
+
+Button:hover {
+    border: 4px solid black;
+    background-color: rgb(34, 220, 34);
+    font-weight: bold;
+}
+
+label {
+    margin-right: 10px;
+}
