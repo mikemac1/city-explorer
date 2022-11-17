@@ -18,7 +18,9 @@ This project is the second JS React app Using APIs and produces a map with longi
 - Create a Pull Request (PR) back to the main branch of your repository.
 - Submit your assignment as a link to your PR, and a comment describing how much time you spent on the lab.
 
-## Architecture
+## Architectures
+
+### Lab 6 Architecture
 
 ![Architecture](architecture.png)
 
