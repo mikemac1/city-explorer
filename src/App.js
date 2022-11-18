@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import Modal from 'react-bootstrap/Modal';
+import Weather from './weather.js'
+
 import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
+
 import './App.css';
 
 class App extends React.Component {
@@ -16,6 +17,9 @@ class App extends React.Component {
       isError: false,
       errorMessage: '',
       weather: [],
+      showLat: '',
+      showLong: '',
+      showMap: {},
       errorCode: ''
     }
   }
@@ -26,12 +30,15 @@ class App extends React.Component {
   }
 
   handleWeather = async () => {
-    let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?city=${this.state.city}`;
+    let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?city=${this.state.city}&lon=${this.state.showLong}&lat=${this.state.showLat}`;
+    // console.log(weatherUrl);
     let weather = await axios.get(weatherUrl);
     console.log(weather);
     this.setState({
       weather: weather.data
     })
+    // console.log(this.state.weather);
+    // 
   }
 
   closeModal = () => {
@@ -56,11 +63,13 @@ class App extends React.Component {
         isError: false
       }, this.handleWeather);
       // setstate is async
-      
-    } catch (error) {
+
+
+
+    } catch (e) {
       this.setState({
-        errorMessage: error.message,
-        errorCode: error.code,
+        errorMessage: e.message,
+        errorCode: e.code,
         isError: true
       })
     }
@@ -70,64 +79,58 @@ class App extends React.Component {
   render() {
 
     let showError = '';
-    let showCity = '';
-    let showLat = '';
-    let showLong = '';
+    
+    // let showCity = '';
+    // let showLat = '';
+    // let showLong = '';
 
-    let showMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=11`;
+    // let showMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=11`;
 
-    if (this.state.isError) {
-      showError = 
+    (this.state.isError) ? showError =
       <article>
-      <Alert variant="danger">Error Code: {this.state.errorCode}</Alert>
-      <Alert  variant="danger">Message: {this.state.errorMessage}</Alert>
+        <Alert variant="danger">Error Code: {this.state.errorCode}</Alert>
+        <Alert variant="danger">Message: {this.state.errorMessage}</Alert>
       </article>
-    } else {
-      showCity = this.state.cityData.display_name;
-      showLat = this.state.cityData.lat;
-      showLong = this.state.cityData.lon;
-    }
+      :
+      <>{this.state.cityData.display_name}
+        {this.state.cityData.lat}
+        {this.state.cityData.lon}
+        {this.state.showMap}
+      </>
+
 
 
     return (
       <>
-        
-          <header>
-            <h1>DATA FROM LOCATIONIQ</h1>
-          </header>
-          <main>
-            <form onSubmit={this.handleCitySubmit}>
-              <label htmlFor="cityLink">Pick A City
-                <input id="cityLink" name="city" type='text' onChange={this.handleCityInput} />
-              </label>
-              <button type="submit" variant="success">Explore</button>
-            </form>
-            <p>{showError}</p>
-          </main>
 
-          <Modal show={this.state.modalShown} onHide={this.closeModal}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          >
-            <Modal.Header>
-              <Modal.Title>City - {showCity}</Modal.Title>
-            </Modal.Header>
+        <header>
+          <h1>DATA FROM LOCATIONIQ</h1>
+        </header>
+        <main>
+          <form onSubmit={this.handleCitySubmit}>
+            <label htmlFor="cityLink">Pick A City
+              <input id="cityLink" name="city" type='text' onChange={this.handleCityInput} />
+            </label>
+            <button type="submit" variant="success">Explore</button>
+          </form>
+          <p>{showError}</p>
+        </main>
 
-            <Modal.Body>
-              <img src={showMap} alt={this.state.city.name + ' area map.'} />
-              <h3>Latitude: {showLat}</h3>
-              <h3>Longitude: {showLong}</h3>
-            </Modal.Body>
+        {this.state.weather.length&&<Weather 
+          showModal={this.state.modalShown}
+          stopModal={this.closeModal}
+          displayCity={this.state.cityData.display_name}
+          displayMap={this.state.showMap}
+          spellCity={this.state.city.name}
+          disLat={this.state.cityData.lat}
+          disLon={this.state.cityData.lon}
+          weatherForecast={this.state.weather}
+        />}
 
-            <Modal.Footer>
-              <Button onClick={this.closeModal} variant="secondary">Close</Button>
-            </Modal.Footer>
-          </Modal>
-          <footer>
-            <p><span>&copy;</span>  Mike McCarty</p>
-          </footer>
-        
+        <footer>
+          <p><span>&copy;</span>  Mike McCarty</p>
+        </footer>
+
       </>
     );
   }
