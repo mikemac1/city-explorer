@@ -6,11 +6,12 @@
 
 This project is the second JS React app Using APIs and produces a map with longitude and latitude in a modal
 
-## Lab 06
+## Lab 06/07
 
 ## Problem Domain
 
-14/15/16 November - Took three days to get this done but finally accomplished.
+14/15/16 November - Took three days to get lab 6 done but finally accomplished.
+17 November - Weather data is now functioning in a modal for each city on the front end with appropriate error handling. The map location is not functioning as it is commented out and not a requirement for lab 7 but the map data & latitude and longitude is still being called from LocationIQ.
 
 ## Instructions
 
