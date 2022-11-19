@@ -11,7 +11,22 @@ h1 {
 }
 
 .modal-content {
+    display: flex;
     align-items: center;
+    border: 2px solid black;
+}
+
+.modal-body, .modal-header, .modal-footer {
+    background-color: rgb(230, 228, 228);
+}
+
+.data {
+    font-weight: bold;
+    color: rgb(78, 69, 69);
+}
+
+.forecast {
+    color: rgb(78, 69, 69);
 }
 
 Button {
@@ -27,3 +42,5 @@ Button:hover {
 label {
     margin-right: 10px;
 }
+
+

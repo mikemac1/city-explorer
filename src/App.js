@@ -30,15 +30,15 @@ class App extends React.Component {
   }
 
   handleWeather = async () => {
-    let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?city=${this.state.city}&lon=${this.state.showLong}&lat=${this.state.showLat}`;
+    console.log(this.state.cityData.lat);
+    console.log(this.state.cityData.lon);
+    let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?city=${this.state.city}&long=${this.state.cityData.lon}&lat=${this.state.cityData.lat}`;
     // console.log(weatherUrl);
     let weather = await axios.get(weatherUrl);
     console.log(weather);
     this.setState({
       weather: weather.data
     })
-    // console.log(this.state.weather);
-    // 
   }
 
   closeModal = () => {
