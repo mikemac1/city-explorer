@@ -6,13 +6,14 @@
 
 This project is the second JS React app Using APIs and produces a map with longitude and latitude in a modal
 
-## Lab 06/07
+## Lab 06/07/08
 
 ## Problem Domain
 
 14/15/16 November - Took three days to get lab 6 done but finally accomplished.
 17 November - Weather data is now functioning in a modal for each city on the front end with appropriate error handling. The map location is not functioning as it is commented out and not a requirement for lab 7 but the map data & latitude and longitude is still being called from LocationIQ.
 19 November - Shifted weather data to be retrieved from Weather Bit versus using the weather.json file.
+20 November - Able to display data from The Movie DB API and format it a Bootstrap-React alert.
 
 ## Instructions
 
@@ -30,6 +31,10 @@ This project is the second JS React app Using APIs and produces a map with longi
 
 ![Architecture](architecture8.png)
 
+### Lab 9 Architecture
+
+![Architecture](architecture9.png)
+
 ## Resources
 
 - [deployment](https://facebook.github.io/create-react-app/docs/deployment)
@@ -43,7 +48,8 @@ This project is the second JS React app Using APIs and produces a map with longi
 - 2:40pm 14 November Initial repository built on local developer's machine and on Github
 - 3:40pm 16 November Completed todo lists for lab 6
 - 10:30am 19 November started to build in Weather Bit data retrieval
-- 3:26opm 19 November successfully completed Weather Bit data retrieval
+- 3:26pm 19 November successfully completed Weather Bit data retrieval
+- 1:30pm 20 November successfully added and displaying The Movie DB data retrieval
 
 ## Comments & Reflections Lab 6
 
@@ -83,3 +89,17 @@ Estimate of time needed to complete: 10 hours
 Start time: 10:30am
 Finish time: 3:30pm
 Actual time needed to complete: 5 hours
+
+### Number and name of feature: Feature #2 - Movies
+
+Estimate of time needed to complete: 10 hours
+Start time: 3:45pm (Saturday)
+Finish time: 1:40pm (Sunday)
+Actual time needed to complete:  ~ 9 hours
+
+### Number and name of feature: Feature #3 - Publish
+
+Estimate of time needed to complete: 4 hours
+Start time: 1:30pm
+Finish time: pm
+Actual time needed to complete:

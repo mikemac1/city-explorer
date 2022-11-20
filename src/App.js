@@ -3,7 +3,7 @@ import axios from 'axios';
 import Weather from './weather.js'
 
 import Alert from 'react-bootstrap/Alert';
-
+// import Button from 'react-bootstrap/Button';
 import './App.css';
 
 class App extends React.Component {
@@ -13,13 +13,14 @@ class App extends React.Component {
     this.state = {
       modalShown: false,
       city: '',
-      cityData: {},
-      isError: false,
-      errorMessage: '',
-      weather: [],
       showLat: '',
       showLong: '',
-      showMap: {},
+      cityData: {},
+      weatherData: [],
+      movieData: [],
+
+      isError: false,
+      errorMessage: '',
       errorCode: ''
     }
   }
@@ -30,23 +31,41 @@ class App extends React.Component {
   }
 
   handleWeather = async () => {
-    console.log(this.state.cityData.lat);
-    console.log(this.state.cityData.lon);
+
     let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?city=${this.state.city}&long=${this.state.cityData.lon}&lat=${this.state.cityData.lat}`;
-    // console.log(weatherUrl);
+
     let weather = await axios.get(weatherUrl);
-    console.log(weather);
+
     this.setState({
-      weather: weather.data
+      weatherData: weather.data
+    })
+  }
+
+  handleMovie = async () => {
+
+    let movieUrl = (`${process.env.REACT_APP_SERVER}/movie?search=${this.state.city}`);
+
+    let movie = await axios.get(movieUrl);
+    console.log(movie);
+    let movieData = (movie);
+
+    this.setState({
+      movieData: movieData.data
     })
   }
 
   closeModal = () => {
-    console.log('Inside of close modal');
     this.setState({
       modalShown: false
     });
   };
+
+  closeAlert = () => {
+    this.setState({
+      alertShown: false
+    });
+  };
+
 
   handleCitySubmit = async (e) => {
 
@@ -60,11 +79,10 @@ class App extends React.Component {
       this.setState({
         cityData: urlData.data[0],
         modalShown: true,
+        alertShown: true,
         isError: false
       }, this.handleWeather);
-      // setstate is async
-
-
+      this.handleMovie();
 
     } catch (e) {
       this.setState({
@@ -79,12 +97,23 @@ class App extends React.Component {
   render() {
 
     let showError = '';
-    
-    // let showCity = '';
-    // let showLat = '';
-    // let showLong = '';
 
-    // let showMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=11`;
+
+    let alertMovieContent = this.state.movieData.map((movieObject, index) => {
+      return (
+        <article key={index}>
+          <Alert variant="success">
+            <Alert.Heading>Movie Title: {movieObject.title}</Alert.Heading>
+            <img src={movieObject.posterPath} alt="Movie poster for {movieObject.title}" width='40%' />
+            <p><span className='alertBold'>Release Date: </span>{movieObject.relDate}</p>
+            <p><span className='alertBold'>Viewers Rating Average: </span>{movieObject.voteAvg}</p>
+            <hr />
+            <p className="mb-0"><span className='alertBold'>Movie Summary: </span>{movieObject.overview}</p>
+          </Alert>
+          <hr />
+        </article>
+      );
+    });
 
     (this.state.isError) ? showError =
       <article>
@@ -102,7 +131,6 @@ class App extends React.Component {
 
     return (
       <>
-
         <header>
           <h1>DATA FROM LOCATIONIQ</h1>
         </header>
@@ -114,23 +142,21 @@ class App extends React.Component {
             <button type="submit" variant="success">Explore</button>
           </form>
           <p>{showError}</p>
+          <div>{alertMovieContent}</div>
         </main>
 
-        {this.state.weather.length&&<Weather 
+        {this.state.weatherData.length && <Weather
           showModal={this.state.modalShown}
           stopModal={this.closeModal}
           displayCity={this.state.cityData.display_name}
-          displayMap={this.state.showMap}
           spellCity={this.state.city.name}
           disLat={this.state.cityData.lat}
           disLon={this.state.cityData.lon}
-          weatherForecast={this.state.weather}
+          weatherForecast={this.state.weatherData}
         />}
-
         <footer>
           <p><span>&copy;</span>  Mike McCarty</p>
         </footer>
-
       </>
     );
   }

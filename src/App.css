@@ -43,4 +43,6 @@ label {
     margin-right: 10px;
 }
 
-
+.alertBold {
+    font-weight: bold;
+}
