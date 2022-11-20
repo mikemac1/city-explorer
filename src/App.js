@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Weather from './weather.js'
+import Movie from './Movie.js'
 
 import Alert from 'react-bootstrap/Alert';
 // import Button from 'react-bootstrap/Button';
@@ -98,23 +99,6 @@ class App extends React.Component {
 
     let showError = '';
 
-
-    let alertMovieContent = this.state.movieData.map((movieObject, index) => {
-      return (
-        <article key={index}>
-          <Alert variant="success">
-            <Alert.Heading>Movie Title: {movieObject.title}</Alert.Heading>
-            <img src={movieObject.posterPath} alt="Movie poster for {movieObject.title}" width='40%' />
-            <p><span className='alertBold'>Release Date: </span>{movieObject.relDate}</p>
-            <p><span className='alertBold'>Viewers Rating Average: </span>{movieObject.voteAvg}</p>
-            <hr />
-            <p className="mb-0"><span className='alertBold'>Movie Summary: </span>{movieObject.overview}</p>
-          </Alert>
-          <hr />
-        </article>
-      );
-    });
-
     (this.state.isError) ? showError =
       <article>
         <Alert variant="danger">Error Code: {this.state.errorCode}</Alert>
@@ -142,9 +126,10 @@ class App extends React.Component {
             <button type="submit" variant="success">Explore</button>
           </form>
           <p>{showError}</p>
-          <div>{alertMovieContent}</div>
         </main>
-
+        <Movie
+          moviesShown={this.state.movieData}
+        />
         {this.state.weatherData.length && <Weather
           showModal={this.state.modalShown}
           stopModal={this.closeModal}
