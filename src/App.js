@@ -14,13 +14,16 @@ class App extends React.Component {
       modalShown: false,
       city: '',
       cityData: {},
+      weatherData: [],
+      movieData: [],
+
       isError: false,
       errorMessage: '',
-      weather: [],
+      errorCode: '',
+      
       showLat: '',
-      showLong: '',
-      showMap: {},
-      errorCode: ''
+      showLong: ''
+      
     }
   }
   handleCityInput = (e) => {
@@ -30,19 +33,30 @@ class App extends React.Component {
   }
 
   handleWeather = async () => {
-    console.log(this.state.cityData.lat);
-    console.log(this.state.cityData.lon);
+
     let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?city=${this.state.city}&long=${this.state.cityData.lon}&lat=${this.state.cityData.lat}`;
-    // console.log(weatherUrl);
+    
     let weather = await axios.get(weatherUrl);
-    console.log(weather);
+    
     this.setState({
-      weather: weather.data
+      weatherData: weather.data
+    })
+  }
+
+  handleMovie = async () => {
+
+    let movieUrl = await axios.get(`${process.env.REACT_APP_SERVER}/movie?search=${this.state.city}`);
+    
+    let movie = await axios.get(movieUrl);
+    console.log(movie);
+    let movieData = (movie);
+    
+    this.setState({
+      movieData: movieData.data
     })
   }
 
   closeModal = () => {
-    console.log('Inside of close modal');
     this.setState({
       modalShown: false
     });
@@ -63,6 +77,7 @@ class App extends React.Component {
         isError: false
       }, this.handleWeather);
       // setstate is async
+      this.handleMovie();
 
 
 
@@ -79,12 +94,6 @@ class App extends React.Component {
   render() {
 
     let showError = '';
-    
-    // let showCity = '';
-    // let showLat = '';
-    // let showLong = '';
-
-    // let showMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=11`;
 
     (this.state.isError) ? showError =
       <article>
@@ -116,15 +125,14 @@ class App extends React.Component {
           <p>{showError}</p>
         </main>
 
-        {this.state.weather.length&&<Weather 
+        {this.state.weatherData.length&&<Weather 
           showModal={this.state.modalShown}
           stopModal={this.closeModal}
           displayCity={this.state.cityData.display_name}
-          displayMap={this.state.showMap}
           spellCity={this.state.city.name}
           disLat={this.state.cityData.lat}
           disLon={this.state.cityData.lon}
-          weatherForecast={this.state.weather}
+          weatherForecast={this.state.weatherData}
         />}
 
         <footer>

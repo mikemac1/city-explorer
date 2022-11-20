@@ -6,7 +6,7 @@
 
 This project is the second JS React app Using APIs and produces a map with longitude and latitude in a modal
 
-## Lab 06/07
+## Lab 06/07/08
 
 ## Problem Domain
 
@@ -83,3 +83,10 @@ Estimate of time needed to complete: 10 hours
 Start time: 10:30am
 Finish time: 3:30pm
 Actual time needed to complete: 5 hours
+
+### Number and name of feature: Feature #2 - Movies
+
+Estimate of time needed to complete: 10 hours
+Start time: 3:45pm
+Finish time: pm
+Actual time needed to complete:  hours
